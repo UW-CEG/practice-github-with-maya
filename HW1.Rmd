@@ -1,0 +1,104 @@
+---
+title: "STAT 311, HW1"
+author: "Maya Xiang"
+date: "Spring 2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggplot2)
+```
+
+### Instructions
++ Please answer ALL questions (including those that do not involve R) in the locations marked in this template. Remember to periodically **knit** your document to check that the output appears as you want it to; you will be turning in your knit html document. 
++ You will need to upload this document in CANVAS. Please be sure to check that your file was uploaded correctly. It does not hurt to screenshot verification of the upload as CANVAS can be glitchy on occasion.
++  Please answer the questions in the order in which they are posed. Write in complete sentences, and support your answers where asked. 
+
+* * *
+
+### Exercise 1: Common sense versus critical thought in research design and statistical inference
+The following scenarios are troubled by flaws in reasoning that would undermine the validity of any statistical inference drawn from the data described. Identify the flaw(s) in reasoning for each scenario and what should have been done differently to produce valid inferences.
+
+a) As of 3 April 2020, New York state had reported 90,279 total cases of the COVID-19, while Washington state had reported only 5,683 total cases. Because the cumulative incidence of COVID-19 cases in New York is 15.89 times greater than that of Washington state, a blogger concludes that Washington state's response has been very effective, while New York state's management of the situation has been reckless and negligent.
+
+The conclusion is biased because there are so many variables including geographic, diversity, life style...which can all lead to a larger number of Covid cases. So, they can not simply state that the New York has more Covid case in Washington because the Washington state's response has been very effective and New York state's management of the situation has been reckless and negligent.
+In order to produce a valid inferences, we need to set an experiment with controlling and randomization. We can choose a 2 nearby county with similar original Covid case randomly and randomly assign New York type of response and Washington type of response. Then observe the increase covid tread of each counties in order to know whether the reason for worse covid is New York government's reckless and negligent management towards it.
+ 
+b) The 206 area code covers phone numbers primarily from King and Kitsap county. In Summer 2016, a political action committee conducted phone polls in an attempt to estimate which presidential candidate King and Kitsap County voters favored in the 2016 general election. They determined that 90% of King County voters and 70% of Kitsap county voters favored the Democratic candidate, yet the official vote counts indicated only 72.1% and 51.1% victories for the Democratic candidate in these counties.
+
+This is not valid because firstly, this may exculde the old people who do not use the smart phone and also, there will be people forget to change the phone number after moving out of the neighborhood.
+In order to produce a valid inferences, we can use the simply sampling which choosing people randomly from the King and Kitsap county and ask them in person to collect their political preference.
+   
+c) The University of Washington wishes to understand whether the wait time until first post-graduation employment differs between majors. To evaluate this, the university takes a simple random sample from all students who graduated in Spring 2019 and surveys the selected individuals about their employment following graduation.
+
+This is not valid because the target population is just the students graduates in Spring 2019. As we all know that year is a weird year with Covi first hit the world.
+In order to generate a valid conclusion, we can use the simple random sampling to collect data from population that student who graduate from 2009 to 2019 to observe the wait time until first post-graduation employment.
+    
+d) When attempting to understand the factors that cause variability in student academic outcomes, educators often distinguish between "aptitude" (a student's natural ability to succeed at academic tasks) and their effort (e.g., the amount of time they dedicate to reading, studying, participation in study groups, etc.). Educators often focus on effort because this is much easier to change through intentional interventions than is aptitude. Along these lines, a graduate student in Education has proposed a dissertation research project to determine whether high school seniors' GPA for their senior year is improved by their participation in a voluntary weekly study session program. As a part of a pilot study at one high school, the graduate student compared GPAs between those seniors who chose to participate in a weekly study session and those who did not. Based on this study, they discovered a large difference in the GPAs of those students who participated in the program and those who did not, with participants improving their GPA by a full grade point, on average. They concluded that the program should be expanded by making it mandatory and offered for all grades.
+
+The test sample is just seniors so that it can not be applied to all the grade. The sample we choose can not represent all the population we want the conclusion to use for
+
+In order conclude a valid conclusion, they need to set an experiment with controlling and randomaztion methods in all the grades and control group is no section offering, 1 treatment group is volunteer study section, and another 1 treatment group is mandatory study section. The result of this experiment can justify that whether the program should be expanded by making it mandatory and offered for all grades.
+
+
+### Exercise 2: (Mis)representing scientific research in popular news coverage
+
+ According to a study published in 1987, the annual air pollution level of five Metropolitan Areas in the United States (measured as Metropolitan sulfate concentration) showed a positive association with the annual total mortality rate of these areas (number of deaths per year per 100,000 people) [https://doi.org/10.1111/j.1539-6924.1987.tb00482.x].
+ 
+a. From this study, a journalist concluded that *for each unit increase in the sulfate air concentration of a metropolitan area (base unit: sulfate micrograms per meter cubed), an individual's odds of dying increased by a factor of approximately 1.02.* Using only the information provided in this italicized sentence, determine whether the *sulfate* variable is numerical or categorical, and justify your answer. Likewise, determine whether the *death* variable is categorical or numerical, and justify your answer. (Reminder: to decide whether a variable is categorical or numerical, think about the different kinds of outcomes each variable can take.)
+
+The "sulfate" variable is numerical because it is a unit increase with the unit-sulfate microngrams per meter cubed. The "death" variable is also numerical because they can increase numerically with the proportion 1.02.
+
+b. In the study cited above, both sulfate concentrations and total mortality rates were measured at the level of the metropolitan area, for five metropolitan areas (Albuquerque, NM; Houston, TX; Las Vegas, NV; Salt Lake City, UT; and Scranton, PA). Revisit the final slide of the first lecture unit, (Slideshow: *Lecture_Chap1_Data_variables_and_research*; slide # 23, "Why observational units matter"). Referring only to points made on this slide, comment on whether the inference made by the journalist covering this research is warranted.
+
+ Yes, his research is warranted. As saying in the lecture slide "An observational study in which a group is the unit of observation". In his conclusion, they observational unit is sulfate concentrations and total mortality rates in 5 metropolitan areas which are included in the target population he made conclusion on which is sulfate concentration in metropolitan areas. 
+
+### Exercise 3: Being clear about the scope and goal of sampling strategies
+
+For each study, identify the *target population*, the *parameter of interest* and the *value of the statistic*. (Please indicate your answers for each keyword in complete sentences and be very specific. Don't say number (or amount) if you mean percentage for instance. ) 
+
+a) In Winter 2020, the instructor of CSSS/SOC/STAT 221 wished to estimate the average age at which their 19 year old students had received their first cell phone. 7 individuals from this age group responded to an anonymous survey, reporting the following ages at receipt of first cellphone:
+
+14, 10, 13, 12, 12, 12, 16
+
+```{r, echo=T}
+mean(14, 10, 13, 12, 12, 12, 16)
+
+```
+  
+Target population: 19 year old student in  CSSS/SOC/STAT 221 for Winter 2020
+Parameter of Interest: Average age for teens who born around 2001 to receive their first cell phone. 
+Value of statistic: We will know the average age for kids born around 2001 receiving cell phone.
+
+b) A political scientist studying Washington state politics wishes to understand the relationship between wealth and election preferences in the recent presidential primary. For each county, they surveyed a representative sample of 200 registered voters, asking their annual gross income for the most recent text year, then calculated the median gross income for each county. For King County, they calculated a median annual gross income of $43,000.
+
+Target population: People in Washington state
+Parameter of Interest: The relationship between wealth and election preferences in the recent presidential choice.
+Value of statistic: We can find the relationship between wealth and election preferences in the recent presidential choice.
+   
+### Exercise 4: Biased sampling 
+Bias threatens to undermine the aims of observational studies, but what factors lead to bias vary between different kinds of observational research. Some sampling strategies are unreliable in every case, while others may fail to produce representative samples depending on the context. For each of the sampling strategies below, provide a short response (2-3 sentences) identifying what leads to biased sampling. This may include direct citations from your textbook, but if you do, properly cite it by putting quotation marks around the quote and including "Diez et al, 2009: [page number(s)]" in parentheses.
+
+a) Convenience samples should never be trusted to produce a representative sample. Why not?
+
+The convenience samples should never be trust because the sample is not randomly selected. The sample which is convenient is originally a condition for sample selection process so that as it is not randomly selected. The sample in this case can not represent the whole population so that it is always biased.
+ 
+b) Simple random sampling can produce representative samples, but if response rates are low, bias may creep in. Why?
+
+Because simple sapling's goal is to characterize patterns of variability of the whole sample so that if the population size is too small, the variability of the sample will be different from the variability in the population. This may lead to failure in represent the true response in the population and the bias will creep in.
+  
+c) Both stratified sampling and cluster sampling may be applied when a population can be divided into distinct sub populations. However, stratified sampling is more appropriate in some situations than cluster sampling. If cluster sampling were applied in a situation where stratified sampling would have been more appropriate, biased estimates of population parameters may result. Why?
+
+Because the stratified sample is trying to understand the difference of the result comparing in the different groups with different characteristics. while the cluster sampling is understand the whole sample population. If the cluster replaces the stratified sampling, we may get same result in groups and fail to comparing the difference in each group so that this may lead to a biased result.   
+
+### Exercise 5: Exercise and Mental Health
+Page 35, problem 1.34 parts (a) -- (f)
+
+a) It is an experiment
+b) treatment group is to exercise twice a week while the control group is to rest.
+c) Yes! They are blocking by the age group:18-30,31-40,41-55
+d) No, this study did not make use of blinding because participants know which group they are in.
+e) Yes, this can generate a causal relationship because experiment is able to generate the causal relationship. No, this can not be applied to the whole sample because the sample excludes the people from 0-17 and 56-even older.
+f) Yes. I will because I do not want to risk people's mental health. I do not want to stop people from exercise because of research.Also, doing mental test is not comfortable for some people also.
